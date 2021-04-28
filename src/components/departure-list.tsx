@@ -1,14 +1,23 @@
 import React from "react";
+import DepartureItem from "./departure-item";
 
 /**
  * Component to show list of departures
 */
-export const DepartureList: React.FC = () => {
-
+type propsType = {
+    stopEvents: any[]
+}
+const DepartureList: React.FC<propsType> = ({ stopEvents }) => {
+    let c = 1;
     // Render
     return (
         <div>
-            This is list of departure
+            {stopEvents.map(stopEvent => (
+                <DepartureItem
+                    key={c++}
+                    stopEvent={stopEvent}
+                />
+            ))}
         </div>
     )
 }
