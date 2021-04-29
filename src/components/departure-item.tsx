@@ -1,10 +1,11 @@
 import React from "react";
+import { IStopEvent } from "../type"
 
 /**
  * This component display item of departures
  */
 type propsType = {
-    stopEvent: any
+    stopEvent: IStopEvent
 }
 const DepartureItem: React.FC<propsType> = ({ stopEvent }) => {
 
@@ -12,8 +13,8 @@ const DepartureItem: React.FC<propsType> = ({ stopEvent }) => {
     return (
         <div>
             <h3>{stopEvent.transportation.disassembledName}</h3>
-            <div>{stopEvent.departureTimeEstimated}</div>
             <div>{stopEvent.transportation.description}</div>
+            <div>{stopEvent.departureTimeEstimated}</div>
         </div>
     )
 }

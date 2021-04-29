@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { IDepartureMonResponse, IStopEvent } from "./type";
 import tripPlannerAPI from "./apis/tripPlanner";
 import DepartureList from "./components/departure-list";
 import './App.css';
@@ -6,7 +7,7 @@ import { AxiosResponse } from 'axios';
 
 function App() {
   // Hold departures / stopEvents
-  const [stopEvents, setStopEvents] = useState([]);
+  const [stopEvents, setStopEvents] = useState<IStopEvent[]>([]);
 
   // Set after effect, no dependencies
   useEffect(() => {
@@ -17,9 +18,8 @@ function App() {
    * Fetch next departures
    */
   const fetchNextDepartures = async (): Promise<void> => {
-    const response: AxiosResponse<any> = await tripPlannerAPI.getDepartureList();
+    const response: AxiosResponse<IDepartureMonResponse> = await tripPlannerAPI.getDepartureList();
     setStopEvents(response.data.stopEvents);
-    console.log("stopEvents have been fetched", response.data.stopEvents);
   }
   return (
     <div className="App">
