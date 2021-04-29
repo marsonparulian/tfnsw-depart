@@ -23,10 +23,8 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>Departure board for NSW - Australia</h1>
-      <header className="App-header">
-      </header>
-      <div className="list departure-list">
+      <header><h1>Departure board for NSW - Australia</h1></header>
+      <div className="list departure-list-cont">
         <DepartureList
           stopEvents={stopEvents}
         />

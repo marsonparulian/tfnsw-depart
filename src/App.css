@@ -1,4 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #eee;
+  padding: 0;
+  margin: 0;
+}
+
 .App {
+  width: 100 hv;
+  max-width: 750px;
   text-align: center;
 }
 
@@ -35,4 +48,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.departure-list {
+  text-align: left;
+  margin: 8px 32px;
+  padding: 8px 32px;
+  background: white;
+}
+
+.departure-item {}
+
+.departure-item .title {
+  float: left;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background: darkorange;
+  margin-right: 8px;
+  padding: auto 16px;
+  text-align: center;
+  width: 72px;
+}
+
+.departure-item .clear {
+  clear: both;
+  margin-bottom: 8px;
 }

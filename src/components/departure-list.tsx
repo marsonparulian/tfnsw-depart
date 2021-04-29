@@ -14,7 +14,8 @@ const DepartureList: React.FC<propsType> = ({ stopEvents }) => {
 
     // Render
     return (
-        <div>
+        <div className="departure-list">
+            <h2>List of departures</h2>
             {stopEvents.map(stopEvent => (
                 <DepartureItem
                     key={c++}

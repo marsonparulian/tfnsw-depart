@@ -11,11 +11,12 @@ const DepartureItem: React.FC<propsType> = ({ stopEvent }) => {
 
     // Render
     return (
-        <div>
-            <h3>{stopEvent.transportation.disassembledName}</h3>
-            <div>{stopEvent.transportation.description}</div>
-            <div>{stopEvent.departureTimeEstimated}</div>
-        </div>
+        <div className="departure-item">
+            <h3 className="title">{stopEvent.transportation.disassembledName}</h3>
+            <div className="lv-1">{stopEvent.transportation.description}</div>
+            <div className="lv-2">{stopEvent.departureTimeEstimated}</div>
+            <div className="clear"></div>
+        </div >
     )
 }
 
