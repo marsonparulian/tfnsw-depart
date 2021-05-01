@@ -42,7 +42,6 @@ function App() {
 
   // Set after effect, no dependencies
   useEffect(() => {
-    fetchNextDepartures();
   }, []);
 
   /**
