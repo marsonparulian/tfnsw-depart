@@ -2,6 +2,16 @@
 
 // interfaces / types below are mimicking response format from TFNSW `trip planner`.
 // However only some properties are included, based on the need of this app.
+
+export interface IStop {
+    id: string
+    name: string
+}
+export interface ILocation {
+    name: string
+    id: string
+    assignedStops: IStop[]
+}
 export interface ITransportation {
     disassembledName: string
     description: string
@@ -15,6 +25,7 @@ export interface IStopEvent {
  */
 export interface IResponse {
     version: string
+    locations: ILocation[]
 }
 /**
  * Interface for response of departure list (`departure_mon`)
