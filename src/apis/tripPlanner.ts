@@ -20,10 +20,10 @@ const getStopList = async (query: string): Promise<AxiosResponse<IResponse>> => 
 /**
  * make API call to get next of departures
  */
-export const getDepartureList = async (): Promise<AxiosResponse<IDepartureMonResponse>> => {
+export const getDepartureList = async (stopId: string): Promise<AxiosResponse<IDepartureMonResponse>> => {
     try {
         // Proxy server for TFNSW `trip planner`
-        const url: string = `${baseUrl}/departure_mon?name_dm=256510`;
+        const url: string = `${baseUrl}/departure_mon?name_dm=${stopId}`;
 
         return axios.get(url);
     } catch (e) {

@@ -1,16 +1,17 @@
 import React from "react";
-import ReactSelectSearch, { SelectSearchOption } from "react-select-search";
+import ReactSelectSearch, { SelectedOption, SelectedOptionValue, SelectSearchOption } from "react-select-search";
 import "react-select-search/style.css";
 
 
 type propsType = {
     options: SelectSearchOption[]
     getOptions: (query: string) => Promise<SelectSearchOption[]>
+    onChange: (selectedOptionValue: SelectedOptionValue | SelectedOptionValue[], selectedOption: SelectedOption | SelectedOption[]) => void
 }
 /**
  * Component to search & select stop
  */
-const StopSelect: React.FC<propsType> = ({ options, getOptions }) => {
+const StopSelect: React.FC<propsType> = ({ options, getOptions, onChange }) => {
 
     // Render
     return (
@@ -19,6 +20,7 @@ const StopSelect: React.FC<propsType> = ({ options, getOptions }) => {
                 search
                 options={options}
                 getOptions={getOptions}
+                onChange={onChange}
                 placeholder="Search a stop.."
             />
         </div>
