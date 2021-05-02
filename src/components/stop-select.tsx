@@ -21,7 +21,7 @@ const StopSelect: React.FC<propsType> = ({ options, getOptions, onChange }) => {
                 options={options}
                 getOptions={getOptions}
                 onChange={onChange}
-                placeholder="Search a stop.."
+                placeholder="Search a stop (minimum 5 chars).."
             />
         </div>
     )
