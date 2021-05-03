@@ -18,6 +18,8 @@ const StopSelect: React.FC<propsType> = ({ options, getOptions, onChange }) => {
         <div className="stop-select">
             <ReactSelectSearch
                 search
+                // wait 900ms after typing search term. Note :  type definition in `react-seelect-search` must be fixed first.
+                debounce={900}
                 options={options}
                 getOptions={getOptions}
                 onChange={onChange}
