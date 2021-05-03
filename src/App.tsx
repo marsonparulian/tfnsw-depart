@@ -14,8 +14,8 @@ function App() {
    * Get options for stop selection component
    */
   const getStopSelectOptions = async (query: string): Promise<SelectSearchOption[]> => {
-    // Return empty result if query is < 5 characters>
-    if (query.trim().length < 5) {
+    // Return empty result if query is empty
+    if (!query) {
       return [];
     }
 
