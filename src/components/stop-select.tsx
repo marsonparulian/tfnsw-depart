@@ -1,17 +1,11 @@
 import React from "react";
-import ReactSelectSearch, { SelectedOption, SelectedOptionValue, SelectSearchOption } from "react-select-search";
+import ReactSelectSearch, { SelectSearchProps } from "react-select-search";
 import "react-select-search/style.css";
 
-
-type propsType = {
-    options: SelectSearchOption[]
-    getOptions: (query: string) => Promise<SelectSearchOption[]>
-    onChange: (selectedOptionValue: SelectedOptionValue | SelectedOptionValue[], selectedOption: SelectedOption | SelectedOption[]) => void
-}
 /**
  * Component to search & select stop
  */
-const StopSelect: React.FC<propsType> = ({ options, getOptions, onChange }) => {
+const StopSelect: React.FC<SelectSearchProps> = ({ options, getOptions, onChange }) => {
 
     // Render
     return (
