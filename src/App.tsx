@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IDepartureMonResponse, IResponse, IStopEvent } from "./type";
+import { IDepartureMonResponse, IResponse, IStop, IStopEvent } from "./type";
 import tripPlannerAPI from "./apis/tripPlanner";
 import StopSelect from "./components/stop-select";
 import DepartureList from "./components/departure-list";
@@ -8,6 +8,9 @@ import { AxiosResponse } from 'axios';
 import { SelectedOption, SelectedOptionValue, SelectSearchOption } from 'react-select-search';
 
 function App() {
+  // Holde the selected stop
+  const [selectedStop, setSelectedStop] = useState<IStop>();
+
   // Hold the options  to select `stop`
   const [stopSelectOptions] = useState<SelectSearchOption[]>([]);
   /**
@@ -54,7 +57,13 @@ function App() {
   /**
    * Handle change on selected stop
    */
-  const onStopSelectChange = (selectedValue: any): void => {
+  const onStopSelectChange = (selectedValue: any, selectedOption: any): void => {
+    // Hold the selected stop
+    setSelectedStop({
+      id: selectedOption.value,
+      name: selectedOption.name
+    });
+
     // Because we know for sure the first argument will be a string
     const stopId = selectedValue as string;
 
