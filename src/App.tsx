@@ -10,9 +10,11 @@ function App() {
   // Hold the selected stop
   const [selectedStop, setSelectedStop] = useState<IStop>();
 
-
-  // Hold departures / stopEventreturn ()
+  // Hold departures / stopEvents
   const [stopEvents, setStopEvents] = useState<IStopEvent[]>([]);
+
+  // The fetch status of `stopEvents`. Possible values : "initial", "fetching", "fetched"
+  const [stopEventsFetchStatus, setStopEventsFetchStatus] = useState<string>("initial");
 
   // Set after effect, no dependencies
   useEffect(() => {
@@ -22,8 +24,17 @@ function App() {
    * Fetch next departures
    */
   const fetchNextDepartures = async (stopId: string): Promise<void> => {
+    // Set status
+    setStopEventsFetchStatus("fetching")
+
+    // Reset the `stopEvents` to initial (empty array)
+    setStopEvents([]);
+
     const response: AxiosResponse<IDepartureMonResponse> = await tripPlannerAPI.getDepartureList(stopId);
     setStopEvents(response.data.stopEvents);
+
+    // Set fetch status
+    setStopEventsFetchStatus("fetched");
   }
   /**
    * Handle change on selected stop
@@ -53,6 +64,7 @@ function App() {
       </div>
       <div className="list departure-list-cont">
         <DepartureList
+          fetchStatus={stopEventsFetchStatus}
           stop={selectedStop}
           stopEvents={stopEvents}
         />
