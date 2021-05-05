@@ -53,6 +53,7 @@ function App() {
       </div>
       <div className="list departure-list-cont">
         <DepartureList
+          stop={selectedStop}
           stopEvents={stopEvents}
         />
       </div>
