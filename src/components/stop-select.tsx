@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { AxiosResponse } from "axios";
 import ReactSelectSearch, { SelectSearchProps, SelectSearchOption } from "react-select-search";
 import { IResponse } from "../type";
@@ -12,7 +12,7 @@ const StopSelect: React.FC<SelectSearchProps> = ({ options, onChange }) => {
     /**
        * Get options for stop selection component
        */
-    const getStopSelectOptions = async (query: string): Promise<SelectSearchOption[]> => {
+    const getStopSelectOptions = useCallback(async (query: string): Promise<SelectSearchOption[]> => {
         // Return empty result if query is empty
         if (!query) {
             return [];
@@ -32,7 +32,8 @@ const StopSelect: React.FC<SelectSearchProps> = ({ options, onChange }) => {
                 value: value
             }
         });
-    }
+    }, []);
+    
     // Render
     return (
         <div className="stop-select">
