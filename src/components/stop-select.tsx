@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { AxiosResponse } from "axios";
 import ReactSelectSearch, { SelectSearchProps, SelectSearchOption } from "react-select-search";
 import { IResponse } from "../type";
@@ -9,10 +9,16 @@ import "react-select-search/style.css";
  * Component to search & select stop
  */
 const StopSelect: React.FC<SelectSearchProps> = ({ options, onChange }) => {
+    // Hold  the query to search for stop
+    const [stopQuery, setStopQuery] = useState<string>("");
+
     /**
        * Get options for stop selection component
        */
     const getStopSelectOptions = useCallback(async (query: string): Promise<SelectSearchOption[]> => {
+        // Persist the query to be used  in search result as N/A message
+        setStopQuery(query);
+
         // Return empty result if query is empty
         if (!query) {
             return [];
@@ -33,7 +39,17 @@ const StopSelect: React.FC<SelectSearchProps> = ({ options, onChange }) => {
             }
         });
     }, []);
-    
+
+    /**
+     * Create empty-list message
+     */
+    const
+        createEmptyMessage = useCallback(() => {
+            // If query is falsy
+            if (!stopQuery) return "Please type to search for stops.."
+            else return `No stops found for keyword '${stopQuery}'`;
+        }, [stopQuery]);
+
     // Render
     return (
         <div className="stop-select">
@@ -45,6 +61,7 @@ const StopSelect: React.FC<SelectSearchProps> = ({ options, onChange }) => {
                 getOptions={getStopSelectOptions}
                 onChange={onChange}
                 placeholder="Search a stop.."
+                emptyMessage={createEmptyMessage}
             />
         </div>
     )
