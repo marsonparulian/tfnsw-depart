@@ -13,32 +13,7 @@ function App() {
 
   // Hold the options  to select `stop`
   const [stopSelectOptions] = useState<SelectSearchOption[]>([]);
-  /**
-   * Get options for stop selection component
-   */
-  const getStopSelectOptions = async (query: string): Promise<SelectSearchOption[]> => {
-    // Return empty result if query is empty
-    if (!query) {
-      return [];
-    }
-
-    // Wait for response
-    const response: AxiosResponse<IResponse> = await tripPlannerAPI.getStopList(query);
-
-    // Create `SelectSearchOption` array
-    return response.data.locations.map(loc => {
-      // Use name from `location.assignedStops[0].name` if exist or use `location.name`
-      const n: string = loc.assignedStops[0].name || loc.name;
-      const value: string = loc.id;
-
-      return {
-        name: n,
-        value: value
-      }
-    });
-
-
-  }
+  
 
   // Hold departures / stopEventreturn ()
   const [stopEvents, setStopEvents] = useState<IStopEvent[]>([]);
@@ -77,7 +52,6 @@ function App() {
       <div className="departure-select-cont">
         <StopSelect
           options={stopSelectOptions}
-          getOptions={getStopSelectOptions}
           onChange={onStopSelectChange}
         />
       </div>
