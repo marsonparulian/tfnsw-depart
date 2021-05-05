@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { IDepartureMonResponse, IResponse, IStop, IStopEvent } from "./type";
+import { IDepartureMonResponse, IStop, IStopEvent } from "./type";
 import tripPlannerAPI from "./apis/tripPlanner";
 import StopSelect from "./components/stop-select";
 import DepartureList from "./components/departure-list";
 import './App.css';
 import { AxiosResponse } from 'axios';
-import { SelectedOption, SelectedOptionValue, SelectSearchOption } from 'react-select-search';
 
 function App() {
-  // Holde the selected stop
+  // Hold the selected stop
   const [selectedStop, setSelectedStop] = useState<IStop>();
 
-  // Hold the options  to select `stop`
-  const [stopSelectOptions] = useState<SelectSearchOption[]>([]);
-  
 
   // Hold departures / stopEventreturn ()
   const [stopEvents, setStopEvents] = useState<IStopEvent[]>([]);
@@ -51,7 +47,7 @@ function App() {
       <header><h1>Departure board for NSW - Australia</h1></header>
       <div className="departure-select-cont">
         <StopSelect
-          options={stopSelectOptions}
+          options={[]}
           onChange={onStopSelectChange}
         />
       </div>
