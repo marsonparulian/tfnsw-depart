@@ -55,7 +55,11 @@ function App() {
 
   return (
     <div className="App">
-      <header><h1>Departure board for NSW - Australia</h1></header>
+      <header>
+        <h1>
+          Departure board NSW - Australia
+        </h1>
+      </header>
       <div className="departure-select-cont">
         <StopSelect
           options={[]}

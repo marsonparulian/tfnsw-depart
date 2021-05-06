@@ -46,6 +46,10 @@ body {
   color: #61dafb;
 }
 
+.App header {
+  margin: 12px 8px 32px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
