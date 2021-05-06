@@ -9,6 +9,8 @@ import "react-select-search/style.css";
  * Component to search & select stop
  */
 const StopSelect: React.FC<SelectSearchProps> = ({ options, onChange }) => {
+    // Hold the status of stops fetching. Possible values : "initial", "fetching", "fetched"
+    const [stopsFetchStatus, setStopsFetchStatus] = useState<string>("initial");
     // Hold  the query to search for stop
     const [stopQuery, setStopQuery] = useState<string>("");
 
@@ -24,8 +26,14 @@ const StopSelect: React.FC<SelectSearchProps> = ({ options, onChange }) => {
             return [];
         }
 
+        // Set status to "fetching"
+        setStopsFetchStatus("fetching");
+
         // Wait for response
         const response: AxiosResponse<IResponse> = await tripPlannerAPI.getStopList(query);
+
+        // Set stops fetching status to "fetched"
+        setStopsFetchStatus("fetched");
 
         // Create `SelectSearchOption` array
         return response.data.locations.map(loc => {
@@ -43,12 +51,12 @@ const StopSelect: React.FC<SelectSearchProps> = ({ options, onChange }) => {
     /**
      * Create empty-list message
      */
-    const
-        createEmptyMessage = useCallback(() => {
-            // If query is falsy
-            if (!stopQuery) return "Please type to search for stops.."
-            else return `No stops found for keyword '${stopQuery}'`;
-        }, [stopQuery]);
+    const createEmptyMessage = useCallback(() => {
+        // If query is falsy
+        if (!stopQuery) return "Please type to search for stops..";
+        else if (stopsFetchStatus === "fetching") return `Fetching stops with keywords '${stopQuery}'..`;
+        else return `No stops found with keyword '${stopQuery}'`;
+    }, [stopsFetchStatus, stopQuery]);
 
     // Render
     return (
