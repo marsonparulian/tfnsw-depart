@@ -73,6 +73,9 @@ function App() {
           stopEvents={stopEvents}
         />
       </div>
+      <footer>
+        Powered by <a href="https://glitch.com" target="_blank">glitch.com</a>
+      </footer>
     </div>
   );
 }
