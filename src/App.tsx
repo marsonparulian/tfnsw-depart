@@ -3,6 +3,7 @@ import { IDepartureMonResponse, IStop, IStopEvent } from "./type";
 import tripPlannerAPI from "./apis/tripPlanner";
 import StopSelect from "./components/stop-select";
 import DepartureList from "./components/departure-list";
+import Footer from "./components/footer";
 import './App.css';
 import { AxiosResponse } from 'axios';
 
@@ -73,9 +74,7 @@ function App() {
           stopEvents={stopEvents}
         />
       </div>
-      <footer>
-        Powered by <a href="https://glitch.com" target="_blank">glitch.com</a>
-      </footer>
+      <Footer />
     </div>
   );
 }

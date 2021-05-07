@@ -70,6 +70,20 @@ footer a {
   }
 }
 
+footer {
+  border-top: 1px #aaa solid;
+}
+
+footer>dl {
+  text-align: left;
+  margin: 12px auto;
+}
+
+footer>dl>dt {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
 .departure-list {
   text-align: left;
   margin: 8px 32px;
