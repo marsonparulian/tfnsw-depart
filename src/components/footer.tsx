@@ -10,7 +10,7 @@ const Footer: React.FC<propsType> = () => {
     //Render
     return (
         <footer>
-            Powered by <a href="https://glitch.com" target="_blank">glitch.com</a>
+            Powered by <a href="https://glitch.com" target="_blank" rel="noreferrer" >glitch.com</a>
             <dl>
                 <dt>About This App</dt>
                 <dd>This  simple dmo app allows user to select a stop (train, bus,etc) &amp; display the corresponding departures from the stop.</dd>
